@@ -15,21 +15,22 @@ public class coreGenKey {
 
         String[] aX = new String[size_sms];
         String[] aY = new String[size_sms];
-        aX=sysSTR.genXascii(key_serect);   /// gen x [asjdba, idnv45, 687aas, ... idnv45]
-        aY=sysSTR.genYascii(key_serect);  // gen y
+        aX=sysSTR.genXascii(key_serect,size_sms);   /// gen x [asjdba, idnv45, 687aas, ... idnv45]
+        aY=sysSTR.genYascii(key_serect,size_sms);  // gen y
+
         String[] cofX = new String[size_sms];
         String[] cofY = new String[size_sms];
-        for(int i=0;i<10;i++){
+        for(int i=0;i<size_sms;i++){
             cofX[i]=sysNewClass.convBinToDec3(sysNewClass.AsciiToBinary(aX[i])); // gen cof [-1.0177658008442876, -11.00135594147757...
             cofY[i]=sysNewClass.convBinToDec3(sysNewClass.AsciiToBinary(aY[i])); // gen cof
         }
         double[] finP = new double[size_sms];
         String[] KP = new String[finP.length];
 
-        for(int i=0;i<10;i++){
+        for(int i=0;i<size_sms;i++){
             double C = Double.parseDouble(cofX[i])-sum5;
             double D = Double.parseDouble(cofX[i])-sum5;
-            finP=sysSTR.KeyPlane(C,D,sum5);    // gen Key [0.24175649366784313, 0.052027498168342845, -0.727368740026904....
+            finP=sysSTR.KeyPlane(C,D,sum5,size_sms);    // gen Key [0.24175649366784313, 0.052027498168342845, -0.727368740026904....
             KP[i] = String.valueOf(finP[i]);
         }
 
@@ -49,4 +50,3 @@ public class coreGenKey {
 
 
 }
-
