@@ -67,17 +67,20 @@ public class DecMainActivity extends Activity {
 	 public void onClick(View v) {
          String decryptedKey=c1.getText().toString();
          String Cipher = msgContent;
-         coreGenKey sysKey = new coreGenKey();
-         sysNewClass sysSTR = new sysNewClass();
-         EncrypMainActivity str = new EncrypMainActivity();
+         newLibCore sysKey = new newLibCore();
+
+
 	 try {
 
-         int size_Cip = Cipher.length()/2;
-         int size_binCip =Cipher.length()*4;
-         String DstrKey = sysKey.genKeyMain(decryptedKey, size_Cip);
+     //    int size_Cip = Cipher.length()/2;
+     //    int size_binCip =Cipher.length()*4;
+     //    String DstrKey = sysKey.genKeyMain(decryptedKey, size_Cip);
 
-         String cipBIN = sysNewClass.hexToBinary(Cipher,size_binCip);
-         int[] binCipArray=new int[DstrKey.length()];
+      //   String cipBIN = sysNewClass.hexToBinary(Cipher,size_binCip);
+         String test3 =  sysKey.decrypted(Cipher, decryptedKey);
+         String asciiPlain =sysKey.convertHexToString(test3);
+
+     /*    int[] binCipArray=new int[DstrKey.length()];
          int[] binPlainArray=new int[DstrKey.length()];
          int[] binKEYArrayD=new int[DstrKey.length()];
 
@@ -99,7 +102,7 @@ public class DecMainActivity extends Activity {
          String s2 = tmpPlain.toString();
          String hexPlain = new BigInteger(s2, 2).toString(16);
 
-         String asciiPlain =sysSTR.convertHexToString(hexPlain);
+         String asciiPlain =sysSTR.convertHexToString(hexPlain);*/
        	 
         decryptedMsg.setText(asciiPlain);
 		 

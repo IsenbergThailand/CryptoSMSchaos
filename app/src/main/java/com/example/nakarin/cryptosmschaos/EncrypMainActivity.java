@@ -47,11 +47,12 @@ public class EncrypMainActivity extends Activity {
 				String key_serect =passwd.getText().toString();	   // password
 	//			EncrypMainActivity str = new EncrypMainActivity();
 				try {
-					sysNewClass sysSTR = new sysNewClass();
-					coreGenKey sysKey = new coreGenKey();
+					newLibCore sysKey = new newLibCore();
 					int size_sms= msgContent.length();
 
-					String strKey = sysKey.genKeyMain(key_serect, size_sms);
+					String hexString =  sysKey.encrypted(msgContentString, key_serect);
+
+					/*String strKey = sysKey.genKeyMain(key_serect, size_sms);
 					String inBin=sysNewClass.AsciiToBinary(msgContentString);    // conv Bin
 					int[] binInArray=new int[strKey.length()];
 					int[] binKEYArray=new int[strKey.length()];
@@ -69,7 +70,7 @@ public class EncrypMainActivity extends Activity {
 						sb.append(i);
 					}
 					String s = sb.toString();
-					String hexString = new BigInteger(s, 2).toString(16);
+					String hexString = new BigInteger(s, 2).toString(16);*/
 
 					sendSMS(recNumString,hexString);
 
